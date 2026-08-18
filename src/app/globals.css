@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FAF7F2;
   --foreground: #171717;
 }
 
@@ -12,15 +12,107 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(15px, -20px) rotate(2deg);
+  }
+  66% {
+    transform: translate(-10px, 15px) rotate(-1deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(-18px, 15px) rotate(-2deg);
+  }
+  66% {
+    transform: translate(12px, -15px) rotate(1.5deg);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes head-shake-continuous {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-8px) rotate(-6deg); }
+  75% { transform: translateX(8px) rotate(6deg); }
+}
+
+@keyframes head-nod-continuous {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  35% { transform: translateY(7px) scaleY(0.94); }
+  70% { transform: translateY(-5px) scaleY(1.03); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 11s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-head-shake-loop {
+  animation: head-shake-continuous 2.2s ease-in-out infinite;
+}
+
+.animate-head-nod-loop {
+  animation: head-nod-continuous 1.8s ease-in-out infinite;
+}
+
+.hover-shake:hover, .active-shake {
+  animation: head-shake-continuous 0.6s ease-in-out;
+}
+
+.hover-nod:hover, .active-nod {
+  animation: head-nod-continuous 0.6s ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.35s ease-in-out;
 }
