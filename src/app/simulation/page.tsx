@@ -1142,54 +1142,57 @@ function SimulationContent() {
 
             {/* MODAL EVALUASI AKHIR / RESULT MODAL VIEW */}
             {isGameOver && (
-              <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-                <div className="bg-[#FAF7F2] w-full max-w-3xl rounded-3xl border-3 border-black p-6 sm:p-10 shadow-[12px_12px_0px_0px_#000] my-8 animate-fadeIn">
+              <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md overflow-y-auto p-4 sm:p-6 flex justify-center items-start sm:items-center">
+                <div className="relative w-full max-w-2xl md:max-w-3xl bg-[#FAF9F6] border-3 border-black rounded-3xl p-5 sm:p-8 shadow-[8px_8px_0px_#000] my-auto flex flex-col gap-4 sm:gap-5 max-h-[90vh] overflow-y-auto animate-fadeIn">
                   
-                  <div className="text-center pb-6 border-b-2.5 border-black/15">
-                    <div
-                      style={{ backgroundColor: getLiteracyGrade().color }}
-                      className="inline-block text-white text-xs font-mono font-black px-4 py-1.5 rounded-full border-2 border-black uppercase shadow-[3px_3px_0px_0px_#000] mb-3"
-                    >
-                      {getLiteracyGrade().badge}
+                  {/* Top Header & Persona Badge */}
+                  <div className="text-center pb-4 border-b-2.5 border-black/15 shrink-0">
+                    <div className="w-full flex justify-center pt-1 mb-2.5">
+                      <div
+                        style={{ backgroundColor: getLiteracyGrade().color }}
+                        className="border-2 border-black text-white px-4 py-1.5 rounded-full text-xs font-mono font-black uppercase shadow-[2px_2px_0px_#000]"
+                      >
+                        {getLiteracyGrade().badge}
+                      </div>
                     </div>
                     
-                    <h2 className="text-2xl sm:text-4xl font-sans font-black text-[#111111] leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-black text-[#111111] leading-tight">
                       {getLiteracyGrade().title}
                     </h2>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-2 max-w-lg mx-auto font-medium font-sans">
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1.5 max-w-lg mx-auto font-medium font-sans">
                       {gameOverReason}
                     </p>
                   </div>
 
                   {/* 4 Final Metric Cards */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 my-6">
-                    <div className="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-black text-center shadow-[3px_3px_0px_0px_#000]">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 shrink-0">
+                    <div className="bg-white p-3 sm:p-3.5 rounded-xl border-2 border-black text-center shadow-[2px_2px_0px_#000]">
                       <span className="text-[10px] font-mono font-black text-gray-500 uppercase">SISA KAS</span>
-                      <p className="text-base sm:text-lg font-black text-emerald-600 mt-1">{formatRupiah(cash)}</p>
+                      <p className="text-base sm:text-lg font-black text-emerald-600 mt-0.5">{formatRupiah(cash)}</p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-2xl border-2 border-black text-center shadow-[3px_3px_0px_0px_#000]">
+                    <div className="bg-white p-3 sm:p-3.5 rounded-xl border-2 border-black text-center shadow-[2px_2px_0px_#000]">
                       <span className="text-[10px] font-mono font-black text-gray-500 uppercase">TOTAL UTANG</span>
-                      <p className="text-base sm:text-lg font-black text-rose-600 mt-1">{formatRupiah(debt)}</p>
+                      <p className="text-base sm:text-lg font-black text-rose-600 mt-0.5">{formatRupiah(debt)}</p>
                     </div>
 
-                    <div className="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-black text-center shadow-[3px_3px_0px_0px_#000]">
+                    <div className="bg-white p-3 sm:p-3.5 rounded-xl border-2 border-black text-center shadow-[2px_2px_0px_#000]">
                       <span className="text-[10px] font-mono font-black text-gray-500 uppercase">TINGKAT STRES</span>
-                      <p className="text-base sm:text-lg font-black text-[#111111] mt-1">{stress}%</p>
+                      <p className="text-base sm:text-lg font-black text-[#111111] mt-0.5">{stress}%</p>
                     </div>
 
-                    <div className="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-black text-center shadow-[3px_3px_0px_0px_#000]">
+                    <div className="bg-white p-3 sm:p-3.5 rounded-xl border-2 border-black text-center shadow-[2px_2px_0px_#000]">
                       <span className="text-[10px] font-mono font-black text-gray-500 uppercase">SKOR LITERASI</span>
-                      <p className="text-base sm:text-lg font-black text-[#FF6B4A] mt-1">{literacy} Poin</p>
+                      <p className="text-base sm:text-lg font-black text-[#FF6B4A] mt-0.5">{literacy} Poin</p>
                     </div>
                   </div>
 
                   {/* Categorized Color Status Recap Cards */}
-                  <div className="mb-6">
-                    <h4 className="text-xs font-mono font-black text-gray-700 uppercase mb-3">
+                  <div className="shrink-0">
+                    <h4 className="text-xs font-mono font-black text-gray-700 uppercase mb-2">
                       📋 REKAP KEPUTUSAN GESTURMU ({decisionHistory.length} KEPUTUSAN):
                     </h4>
-                    <div className="space-y-2.5 max-h-56 overflow-y-auto pr-1">
+                    <div className="space-y-2 max-h-44 sm:max-h-56 overflow-y-auto pr-1">
                       {decisionHistory.map((item, index) => {
                         const isSafe = item.safetyType === "safe";
                         const isWarning = item.safetyType === "warning";
@@ -1197,7 +1200,7 @@ function SimulationContent() {
                         return (
                           <div
                             key={index}
-                            className={`p-3.5 rounded-xl border-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs ${
+                            className={`p-3 rounded-xl border-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs ${
                               isSafe
                                 ? "bg-emerald-50 border-emerald-600 text-emerald-950"
                                 : isWarning
@@ -1205,7 +1208,7 @@ function SimulationContent() {
                                 : "bg-rose-50 border-rose-600 text-rose-950"
                             }`}
                           >
-                            <div className="flex items-start gap-2.5">
+                            <div className="flex items-start gap-2">
                               <span
                                 className={`px-2 py-0.5 rounded font-mono font-black text-[10px] uppercase shrink-0 border ${
                                   item.action === "YES" ? "bg-emerald-100 text-emerald-800 border-emerald-300" : "bg-rose-100 text-rose-800 border-rose-300"
@@ -1228,11 +1231,11 @@ function SimulationContent() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-2.5 pt-2 mt-auto shrink-0">
                     <button
                       type="button"
                       onClick={() => initializeModule(currentModuleKey)}
-                      className="flex-1 bg-[#FFA6C9] hover:bg-[#ff8cb8] text-black py-3.5 px-6 rounded-2xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-sans"
+                      className="flex-1 bg-[#FFA6C9] hover:bg-[#ff8cb8] text-black py-3 px-5 rounded-xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-sans"
                     >
                       <RotateCcw className="w-4 h-4" />
                       Mainkan Lagi (Acak 5 Baru)
@@ -1241,14 +1244,14 @@ function SimulationContent() {
                     <button
                       type="button"
                       onClick={() => setViewState("case-select")}
-                      className="flex-1 bg-[#C8B6FF] hover:bg-[#bba6f7] text-black py-3.5 px-6 rounded-2xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-sans"
+                      className="flex-1 bg-[#C8B6FF] hover:bg-[#bba6f7] text-black py-3 px-5 rounded-xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-sans"
                     >
                       Pilih Kasus Lain
                     </button>
 
                     <Link
                       href="/"
-                      className="bg-black text-white hover:bg-zinc-800 py-3.5 px-6 rounded-2xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-[6px_6px_0px_0px_#ffffff] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer text-center font-sans"
+                      className="bg-black text-white hover:bg-zinc-800 py-3 px-5 rounded-xl border-2 border-black text-xs font-black tracking-wider uppercase shadow-[3px_3px_0px_#fff] hover:shadow-[5px_5px_0px_#fff] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer text-center font-sans"
                     >
                       Kembali ke Beranda
                     </Link>
